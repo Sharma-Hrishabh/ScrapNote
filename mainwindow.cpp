@@ -115,3 +115,10 @@ void MainWindow::on_actionSave_triggered()
         out << text;
         file.close();
 }
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox msgBox;
+    msgBox.setText("Created By: Hrishabh Sharma");
+    msgBox.exec();
+}
