@@ -7,8 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setCentralWidget(ui->textEdit);
-
-
+    setWindowTitle("ScrapNote");
 }
 
 MainWindow::~MainWindow()
@@ -20,6 +19,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_triggered()
 {
     currentFile.clear();
+    setWindowTitle("");
     ui->textEdit->setText(QString());
 }
 
@@ -64,4 +64,54 @@ void MainWindow::on_actionSave_As_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
+}
+
+void MainWindow::on_actionCopy_triggered()
+{
+    ui->textEdit->copy();
+}
+
+void MainWindow::on_actionCut_triggered()
+{
+    ui->textEdit->cut();
+}
+
+
+void MainWindow::on_actionPaste_triggered()
+{
+    ui->textEdit->paste();
+}
+
+
+void MainWindow::on_actionUndo_triggered()
+{
+    ui->textEdit->undo();
+}
+
+void MainWindow::on_actionRedo_triggered()
+{
+    ui->textEdit->redo();
+}
+
+
+void MainWindow::on_actionSave_triggered()
+{
+    QString fileName;
+        // If we don't have a filename from before, get one.
+        if (currentFile.isEmpty()) {
+            fileName = QFileDialog::getSaveFileName(this, "Save");
+            currentFile = fileName;
+        } else {
+            fileName = currentFile;
+        }
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly | QFile::Text)) {
+            QMessageBox::warning(this, "Warning", "Cannot save file: " + file.errorString());
+            return;
+        }
+        setWindowTitle(fileName);
+        QTextStream out(&file);
+        QString text = ui->textEdit->toPlainText();
+        out << text;
+        file.close();
 }

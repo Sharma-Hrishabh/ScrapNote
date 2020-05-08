@@ -45,8 +45,8 @@
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
-    <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -63,10 +63,29 @@
    <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+   <addaction name="actionCopy"/>
+   <addaction name="actionCut"/>
+   <addaction name="actionPaste"/>
+   <addaction name="separator"/>
+  </widget>
   <action name="actionNew">
    <property name="icon">
     <iconset>
-     <normalon>:/imgs/New.bmp</normalon>
+     <normalon>:/imgs/file.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -76,7 +95,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset>
-     <normalon>:/imgs/Open.bmp</normalon>
+     <normalon>:/imgs/folder.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -85,20 +104,20 @@
   </action>
   <action name="actionSave_As">
    <property name="icon">
-    <iconset>
-     <normalon>:/imgs/Save.bmp</normalon>
-    </iconset>
+    <iconset resource="Resources.qrc">
+     <normaloff>:/imgs/save-1.png</normaloff>
+     <normalon>:/imgs/Save.bmp</normalon>:/imgs/save-1.png</iconset>
    </property>
    <property name="text">
     <string>Save As</string>
    </property>
   </action>
-  <action name="actionPrint">
-   <property name="text">
-    <string>Print</string>
-   </property>
-  </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normalon>:/imgs/close.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
@@ -106,7 +125,7 @@
   <action name="actionCopy">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/imgs/Copy.bmp</normaloff>:/imgs/Copy.bmp</iconset>
+     <normaloff>:/imgs/copy.png</normaloff>:/imgs/copy.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -115,7 +134,7 @@
   <action name="actionCut">
    <property name="icon">
     <iconset>
-     <normalon>:/imgs/Cut.bmp</normalon>
+     <normalon>:/imgs/scissors.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -125,7 +144,7 @@
   <action name="actionPaste">
    <property name="icon">
     <iconset>
-     <normalon>:/imgs/Paste.bmp</normalon>
+     <normalon>:/imgs/paste.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -133,13 +152,33 @@
    </property>
   </action>
   <action name="actionUndo">
+   <property name="icon">
+    <iconset>
+     <normalon>:/imgs/undo.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Undo</string>
    </property>
   </action>
   <action name="actionRedo">
+   <property name="icon">
+    <iconset>
+     <normalon>:/imgs/redo.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset>
+     <normalon>:/imgs/save.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
    </property>
   </action>
  </widget>
